@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="Big-5">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <!-- html如要使用vue實體中的data物件中的變數，要使用{{name}}呼叫 -->
+        <div id="test">{{name}}, 祝你{{age}}歲{{msg}}</div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</html>
+
+<script>
+
+    //Reactive Programming：頁面上的元件、狀態有互動、聯動。三大前端框架VAR概念皆係於此。
+    new Vue({
+        
+        // el: "#test": 要控制那些元素、範圍。
+        // "el" is a keyword, and "element" is not allowed.
+        el: "#test",
+
+        data: {
+            name: "蘇柏丞",
+            age: 18,
+            msg:"生日快樂!!",
+        },
+    })
+</script>

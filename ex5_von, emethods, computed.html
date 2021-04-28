@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  lang="zh-Hant-TW">
+
+    <head>
+        <meta charset="Big-5">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+        <div id="test">
+
+            <!-- @click = v-on:click -->
+
+            <!-- Vue.js會自動去解析字串，了解Programmer想要做啥。 -->
+            <!-- <button @click="result = result *2">加倍</button> -->
+    
+            <!-- v-on:太常寫，因此可以改寫成@click="result=result*2" -->
+            <!-- 複雜的邏輯計算，v-on:click裡頭只需要掛上事前在vue實體內的methods中定義的function即可如：v-on:click="calculate"。 -->
+            <button @click="calculate">加倍</button>
+
+            result: {{result}}</br>
+            price: {{price}}
+        </div>
+
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</html>
+
+<script>
+
+    // method vs computed：
+    // 做某些事情 => method
+    // 監看某些事件的變化 => computed?    
+    new Vue({
+        
+        el: "#test",
+
+        data: {
+            result: 100,
+        },
+
+        // methods：適用於複雜的計算，如果沒加s，會存取不到Vue實體的方法。
+        methods:{
+            calculate(){
+                this.result = this.result *2;
+            },
+        },
+
+        // 適用於複雜的計算，情境為希望price會跟著result的值變動且為result的1/10
+        // 利用computed 中定義mehod，來取代data的值
+        // 讓{{price}看起來是在存取data，但實際上是呼叫method。
+        computed:{
+
+            // 假設把price包在calculate的方法裡，就會造成只有calculate才會觸發值得改變；
+            // 但把price的data包在computed裡的method裡，就price會去監看result的值去改變。
+            price(){
+                return this.result / 10;
+            },
+        },
+    })
+
+    
+</script>

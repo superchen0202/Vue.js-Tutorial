@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html  lang="zh-Hant-TW">
+
+    <head>
+        <meta charset="Big-5">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <div id ="test">
+            <!-- Test Case1 -->
+            <!-- Vue.js 會去解析v-if 內的字串，判斷programmer想做什麼 -->
+            <span v-if="age >= 18">大人</span>
+            <span v-if="age < 18">小孩</span>
+
+            <!-- Test Case2 v-else -->
+            <span v-if="age >= 18">大人</span>
+            <span v-else>小孩</span>
+
+            <!-- Test Case3 v-show -->
+            <!-- 如果畫面會需要重複出現就使用v-show -->
+            <span v-if="age < 18">直接變註解</span>
+            <span v-show="age < 18">display="none"，如果畫面需要重複出現就使用v-show</span>
+
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</html>
+
+<script>
+    
+    new Vue({
+        
+        el: "#test",
+
+        data: {
+            age: 18,    //change tha age value to controll the v-if efffect
+        },
+    })
+
+    
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  lang="zh-Hant-TW">
+
+    <head>
+        <meta charset="Big-5">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+
+    <body>
+
+        <ul id="test">
+            <!-- 以前如果要將朋友清單條列出來可能需要透過<li>逐一打出來，或js的loop，但v-for可以直接透過寫條件列出。 -->
+            <li v-for="friend in friends">{{friend}}</li>
+        </ul>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</html>
+
+<script>
+    
+    // Virtual DOM與效能：
+    // 一般的DOM在瀏覽器上的渲染效能不好，改一小塊地方整個頁面都需要渲染
+    // V-DOM在可控制的範圍內如有變動，只需要重新渲染改區即可，效能比一般DOM好
+    // 主流框架VAR皆有提出類似V-DOM的概念
+    new Vue({
+        
+        el: "#test",
+
+        data: {
+            friends:["A", "B", "C"],
+        },
+    })
+
+</script>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  lang="zh-Hant-TW">
+
+    <head>
+        <meta charset="Big-5">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+
+    <body>
+      <div id="app">
+        <form action="#" class="bg-white w-full max-w-md shadow-md m-5 p-4">
+      
+          <label for="height" >身高</label>
+          <input type="text" id ="height" placeholder="請輸入身高(公分)" class="rounded shadow border px-3 py-2 mb-2 w-full" v-model="height" >
+      
+          <label for="weight">體重</label>
+          <input type="text" id ="weight" placeholder="請輸入體重(公斤)" class="rounded shadow border px-3 py-2 mb-2 w-full" v-model="weight">
+      
+          <span>{{result}}</span>
+      
+        </form>
+      
+      </div>
+      
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</html>
+
+<script>
+
+  new Vue({
+  
+  el: "#app",
+  
+  data:{
+    height: 0,
+    weight: 0,
+  },
+  
+  computed:{
+           
+    result(){
+      
+      let h = this.height / 100;
+      let w = this.weight;
+      
+      if ( h > 0 && w > 0){
+        let BMI = w / (h*h);
+        BMI = Math.round(BMI * 100) / 100;
+        return BMI;    
+      }
+
+      else{
+        return 0;
+      }      
+    }
+  
+  },
+ 
+})
+    
+</script>
